@@ -1,0 +1,58 @@
+.landing-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: #000;
+    color: #fff;
+    margin: 0 auto;
+  }
+  
+  .intro-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .intro-section h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #ffcba6; /* 예시 파스텔톤 */
+  }
+  
+  .intro-section p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  .start-button {
+    background-color: #f5bba7;
+    border: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .start-button:hover {
+    background-color: #f0a;
+    color: #fff;
+  }
+  
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 50%;
+  }
+  
+  .album-grid img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
