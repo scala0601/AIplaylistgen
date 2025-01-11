@@ -8,13 +8,13 @@ function Home() {
         <div className="landing-container">
           {/* 좌측: 타이틀 섹션 */}
           <div className="intro-section">
+            <div className="empty-box"></div>
             <h1>Turn Your Diary<br/>Into Playlist</h1>
             <p>
-              오늘의 일기를 작성하세요. 당신의 글 속 감정을 읽어내어, <br/>
-              하루의 분위기에 어울리는 맞춤형 플레이리스트를 추천해드립니다. <br/>
-              매일의 감정이 음악으로 공감받는 순간을 경험하세요.
+              오늘의 일기를 작성하세요. 당신의 글 속 감정을 읽어내어, 하루의 분위기에 어울리는 맞춤형 플레이리스트를 추천해드립니다. 매일의 감정이 음악으로 공감받는 순간을 경험하세요.
             </p>
-            <button className="start-button hover-button2">지금 시작하기 →</button>
+            <button className="start-button hover-button2">
+              지금 시작하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→</button>
           </div>
 
           {/* 우측: 앨범 이미지 그리드 */}

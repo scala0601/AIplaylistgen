@@ -14,7 +14,7 @@
   --color-beige: #F5E5C0;
   
   /* gradient 변수 등록 */
-  --gradient-primary: linear-gradient(45deg, var(--color-pink), var(--color-beige));
+  --gradient-primary: linear-gradient(135deg, var(--color-pink), var(--color-beige));
   --gradient-secondary: linear-gradient(90deg, var(--color-pink), var(--color-beige));
   
   /* hover 효과용 색상 변수 추가 */
@@ -61,6 +61,13 @@ button {
 }
 
 .hover-button2:hover {
-  background-color: var(--hover-pink);
+  background: var(--hover-pink);
   color: #fff;
+}
+
+.empty-box {
+  width: 60px;
+  height: 25px;
+  background: var(--gradient-primary);
+  border-radius: 8px;
 }
