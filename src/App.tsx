@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import DiaryDetail from './pages/DiaryDetail';
 import ProtectedRoute from './components/ProtectedRoute';
+import Loading from './pages/Loading';
+import Playlist from './pages/Playlist';
 
 function App() {
   return (
@@ -33,6 +35,12 @@ function App() {
           <Route path="/calendar/diary-detail/:date" element={
             <ProtectedRoute>
               <DiaryDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/loading" element={<Loading />} />
+          <Route path="/playlist" element={
+            <ProtectedRoute>
+              <Playlist />
             </ProtectedRoute>
           } />
         </Routes>

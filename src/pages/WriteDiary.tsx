@@ -1,7 +1,6 @@
 // src/pages/WriteDiary.tsx
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { saveDiary } from '../services/diaryService';
+import { useParams, useNavigate } from 'react-router-dom';
 import './WriteDiary.css';
 
 function WriteDiary() {
@@ -10,8 +9,9 @@ function WriteDiary() {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [selectedGenre, setSelectedGenre] = useState<string>('');
+  const navigate = useNavigate();
 
-  const genres = ['락', '케이팝', '힙합', '팝', '재즈', '클래식', 'EDM', '레게', 'R&B', '컨트리'];
+  const genres = ['장르 무관','락', '케이팝', '힙합', '팝', '재즈', '클래식', 'EDM', '레게', 'R&B', '컨트리'];
 
   useEffect(() => {
     const today = new Date();
@@ -31,65 +31,65 @@ function WriteDiary() {
     setSelectedGenre(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault(); // 기본 제출 방지
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const diaryData = { date: currentDate, title, content };
-    await saveDiary(diaryData);
-    console.log('일기 저장:', diaryData);
+  try {
+    navigate(`/loading`, {
+      state: { date: currentDate, title, content, genre: selectedGenre },
+    });
+  } catch (error) {
+    console.error('오류 발생:', error);
+  }
   };
 
   return (
-    <div className="diary-container">
-      <div style={{ padding: '20px' }}>
-        <h1>Write Diary Page</h1>
-        <h2>{currentDate}의 일기</h2>
-        
-        <form onSubmit={handleSubmit}>          
-          <div className="input-group">
-            <input
-              type="text"
-              value={title}
-              onChange={handleTitleChange}
-              placeholder="제목을 입력하세요..."
-              className="diary-title"
-            />
-          </div>
-          <div className="input-group">
-            <textarea
-              value={content}
-              onChange={handleContentChange}
-              placeholder="오늘의 이야기를 들려주세요..."
-              className="diary-textarea" 
-              rows={10}
-            />
-          </div>
-          <div className="input-group">
-            <select value={selectedGenre} onChange={handleGenreChange} className="diary-genre">
-              <option value="">장르를 선택하세요...</option>
-              {genres.map((genre) => (
-                <option key={genre} value={genre}>
-                  {genre}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button 
-            type="submit"
-            className="submit-button"
-          >
-            일기 저장하기
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              // TODO: 감정 분석 및 플레이리스트 생성 API 호출
-              console.log('플레이리스트 생성:', { content });
-            }}
-            className="playlist-button"
-          >
-            오늘의 플레이리스트 생성하기
-          </button>
-        </form>
+    <div className="container">
+      <div className="diary-container">
+        <h1 className="diary-header">오늘의 일기를 작성해보세요</h1>
+        <h2 className="diary-date">{new Date(currentDate).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'})}</h2>
+          <form onSubmit={handleSubmit} className="diary-form">          
+            <div className="input-group">
+              <input
+                type="text"
+                value={title}
+                onChange={handleTitleChange}
+                placeholder="제목을 입력하세요..."
+                className = "diary-title"
+              />
+            </div>
+            <div className="input-group">
+              <textarea
+                value={content}
+                onChange={handleContentChange}
+                onKeyDown={handleKeyDown}
+                placeholder="오늘의 이야기를 들려주세요..."
+                className="diary-textarea" 
+                rows={10}
+              />
+            </div>
+            <div className="input-group">
+              <select value={selectedGenre} onChange={handleGenreChange} className="diary-genre">
+                <option value="">장르를 선택하세요...</option>
+                {genres.map((genre) => (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button
+              type="submit"
+              className="submit-button hover-button2"
+            >
+              오늘의 플레이리스트 생성하기
+            </button>
+          </form>
       </div>
     </div>
   );

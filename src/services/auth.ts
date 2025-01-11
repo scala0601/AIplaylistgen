@@ -1,3 +1,4 @@
+// src/services/auth.ts
 // 인증 관련 타입 정의
 export interface LoginCredentials {
   username: string;

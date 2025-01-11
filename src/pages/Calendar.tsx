@@ -2,6 +2,7 @@
 import React, { MouseEvent } from 'react';
 import { Calendar as ReactCalendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import './Calendar.css';
 import { Value } from 'react-calendar/dist/cjs/shared/types.js';
 
 function Calendar() {
@@ -14,7 +15,7 @@ function Calendar() {
               const formattedDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
                 .toISOString()
                 .split('T')[0];
-              window.location.href = `/calendar/diary-detail/${formattedDate}`;
+              window.location.href = `/playlist?date=${formattedDate}`;
             }}
             value={new Date()}
             locale="ko-KR" 

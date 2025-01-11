@@ -1,74 +1,93 @@
 .diary-container {
     background-color: #000;
-    min-height: 100vh;
+    width: 50%;
+    min-width: 300px; 
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    align-items: flex-start;
   }
 
-h1 {
+.diary-header {
     font-size: 2rem;
-    color: #333;
-    text-align: center;
+    font-weight: 800;
+    text-align: start;
+    margin: 56px 0 32px 0;
+
+    background: var(--gradient-secondary);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
-h2 {
+.diary-date {
     font-size: 1.5rem;
-    color: #666;
-    text-align: center;
-    margin-bottom: 20px;
-}
+    font-weight: 500;   
+    text-align: start;
+    margin: 0 0 24px;
+    color: #ccc;
+  }
+
+.diary-form {
+    width: 100%;
+}   
 
 .input-group {
     margin-bottom: 15px;
-}
-
-.diary-title {
+    border-radius: 8px; 
+  }
+.input-group input,
+.input-group textarea,
+.input-group select {
     width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: inherit; 
+    padding: 12px 15px;
+    font-size: 0.875rem;
+    font-family: Inter;
+    font-weight: 500;
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+    color: white; 
+}
+
+  
 .diary-genre {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    color:  rgba(255, 255, 255, 0.6); 
 }
-
-.diary-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical; /* 수직으로 크기 조절 가능 */
+.diary-genre option {
+    background-color: #000;
 }
-
-.submit-button, .playlist-button {
-    padding: 10px 15px;
-    font-size: 1rem;
+  
+.diary-title{
+    color: white;
+}
+  .diary-textarea {
+      font-size: 1rem;
+      color:white;
+      resize: vertical; /* 수직으로 크기 조절 가능 */
+  }
+  
+  .submit-button {
+    background: var(--gradient-primary);
     border: none;
-    border-radius: 4px;
+    width: fit-content;
+    padding: 12px 20px;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: 800;
+    
     cursor: pointer;
-    margin-right: 10px;
-}
+    align-items: center;
+    justify-content: center;
+  }
+  
 
-.submit-button {
-    background-color: #4CAF50; /* 녹색 */
-    color: white;
-}
-
-.playlist-button {
-    background-color: #2196F3; /* 파란색 */
-    color: white;
-}
-
-.submit-button:hover, .playlist-button:hover {
-    opacity: 0.9; /* 호버 시 투명도 변경 */
-} 
