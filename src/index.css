@@ -3,7 +3,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -18,8 +18,8 @@
   --gradient-secondary: linear-gradient(90deg, var(--color-pink), var(--color-beige));
   
   /* hover 효과용 색상 변수 추가 */
-  --hover-primary: #A9A9A9;
-  --hover-secondary: #f05f7a;
+  --hover-gray: #A9A9A9;
+  --hover-pink: #f05f7a;
   
   /* hover 트랜지션 시간 변수 */
   --transition-speed: 0.3s;
@@ -48,12 +48,12 @@ button {
 }
 
 /* 공통 hover 효과 클래스들 */
-.hover-primary {
+.hover-gray {
   transition: all var(--transition-speed);
 }
 
-.hover-primary:hover {
-  color: var(--hover-primary);
+.hover-gray:hover {
+  color: var(--hover-gray);
 }
 
 .hover-button2 {
@@ -61,6 +61,6 @@ button {
 }
 
 .hover-button2:hover {
-  background-color: var(--hover-secondary);
+  background-color: var(--hover-pink);
   color: #fff;
 }

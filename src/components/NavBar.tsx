@@ -11,22 +11,22 @@ function NavBar() {
       <div className="logo">SERVICE</div>
       <ul className="nav-links">
         <li>
-          <Link to="/" className={`hover-primary ${location.pathname === '/' ? 'active' : ''}`}>
+          <Link to="/" className={`hover-gray ${location.pathname === '/' ? 'active' : ''}`}>
             Home
           </Link>
         </li>
         <li>
-          <Link to="/diary" className={`hover-primary ${location.pathname === '/diary' ? 'active' : ''}`}>
+          <Link to="/diary" className={`hover-gray ${location.pathname === '/diary' ? 'active' : ''}`}>
             Write Diary
           </Link>
         </li>
         <li>
-          <Link to="/calendar" className={`hover-primary ${location.pathname === '/calendar' ? 'active' : ''}`}>
+          <Link to="/calendar" className={`hover-gray ${location.pathname === '/calendar' ? 'active' : ''}`}>
             Calendar
           </Link>
         </li>
         <li>
-          <Link to="/login" className={`hover-primary ${location.pathname === '/login' ? 'active' : ''}`}>
+          <Link to="/login" className={`hover-gray ${location.pathname === '/login' ? 'active' : ''}`}>
             Login
           </Link>
         </li>
