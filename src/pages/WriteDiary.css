@@ -1,0 +1,74 @@
+.diary-container {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.diary-title {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.diary-genre {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.diary-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* 수직으로 크기 조절 가능 */
+}
+
+.submit-button, .playlist-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.submit-button {
+    background-color: #4CAF50; /* 녹색 */
+    color: white;
+}
+
+.playlist-button {
+    background-color: #2196F3; /* 파란색 */
+    color: white;
+}
+
+.submit-button:hover, .playlist-button:hover {
+    opacity: 0.9; /* 호버 시 투명도 변경 */
+} 

@@ -1,8 +1,12 @@
 // src/pages/LandingPage.tsx
 import React from 'react';
 import './Home.css';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
   return (
     <div className="container">
         <div className="landing-container">
@@ -13,7 +17,13 @@ function Home() {
             <p>
               오늘의 일기를 작성하세요. 당신의 글 속 감정을 읽어내어, 하루의 분위기에 어울리는 맞춤형 플레이리스트를 추천해드립니다. 매일의 감정이 음악으로 공감받는 순간을 경험하세요.
             </p>
-            <button className="start-button hover-button2">
+            <button className="start-button hover-button2" onClick={() => {
+              if (isLoggedIn) {
+                navigate('/diary');
+              } else {
+                navigate('/login', { state: { from: '/diary' } });
+              }
+            }}>
               지금 시작하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→</button>
           </div>
 

@@ -48,3 +48,27 @@
     font-weight: bold;
   }
   
+  .profile-info {
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+    margin-bottom: 24px;
+  }
+  
+  .username {
+    color: var(--color-beige);
+    font-weight: 300;
+    font-size: 0.75rem;
+    align-self: center; 
+    margin-right: 8px;
+  }
+  
+  .profile-image {
+    width: 24px; 
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  
+  
