@@ -38,7 +38,7 @@ function Login() {
         }
       }}>
         <h2 className="title-medium center">로그인</h2>
-        <div className="input-group">
+        <div className="login-input-group">
           <input
             type="text"
             value={username}
@@ -47,7 +47,7 @@ function Login() {
             className="login-input"
           />
         </div>
-        <div className="input-group">
+        <div className="login-input-group">
           <input
             type="password"
             value={password}

@@ -10,11 +10,11 @@ interface AuthContextType {
 // Context 생성
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider 컴포넌트 생성, 지금은 항상 로그인 상태
+// Provider 컴포넌트 생성
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  //const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isLoggedIn = true;
-  const setIsLoggedIn = () => {};
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //const isLoggedIn = true;
+  //const setIsLoggedIn = () => {};
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}

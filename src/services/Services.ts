@@ -33,7 +33,8 @@ export const generatePlaylist = async (diaryData: { date: string; title: string;
     title: string;
     content: string;
     date: string;
-    emotion: string | null;
+    genre: string;
+    emotion: string;
     playlist: Array<{
       title: string;
       artist: string;
@@ -48,25 +49,26 @@ export const generatePlaylist = async (diaryData: { date: string; title: string;
       title: "행복한 하루",
       content: "오늘은 정말 행복한 하루였어요. 햇살이 따뜻하고 기분 좋은 바람이 불었어요.",
       date,
+      genre: "pop",
       emotion: "행복",
       playlist: [
         {
           title: "Blinding Lights",
           artist: "The Weeknd",
           album: "After Hours",
-          coverImage: "https://upload.wikimedia.org/wikipedia/en/a/a0/The_Weeknd_-_Blinding_Lights.png",
+          coverImage: 'https://picsum.photos/id/1015/200/200',
         },
         {
           title: "Watermelon Sugar",
           artist: "Harry Styles",
           album: "Fine Line",
-          coverImage: "https://upload.wikimedia.org/wikipedia/en/f/f4/Harry_Styles_-_Fine_Line.png",
+          coverImage: 'https://picsum.photos/id/1015/200/200',
         },
         {
           title: "Levitating",
           artist: "Dua Lipa",
           album: "Future Nostalgia",
-          coverImage: "https://upload.wikimedia.org/wikipedia/en/0/0d/Dua_Lipa_-_Future_Nostalgia.png",
+          coverImage: 'https://picsum.photos/id/1015/200/200',
         },
       ],
     };
