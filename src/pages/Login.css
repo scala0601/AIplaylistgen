@@ -1,0 +1,96 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: black; 
+}   
+
+.input-group {
+    
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8); 
+  }
+  
+  .input-group input {
+    color: white; 
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 8px; 
+    padding: 12px 15px;
+    width: 100%;
+    font-size: 0.875rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6); 
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border: 1px solid #e4a8ae; 
+    box-shadow: 0 0 8px rgba(228, 168, 174, 0.4); 
+  }
+  
+  .button {
+    border: none;
+    color: #000; 
+    font-size: 0.75rem;
+    font-weight: 500;
+    
+    padding: 10px 20px;
+    border-radius: 20px; 
+    cursor: pointer;
+    width: 100%; 
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .login-button {
+    background: var(--gradient-primary);
+  }
+
+  .google-login-button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .google-icon {
+    width: 16px; 
+    height: 16px;
+    margin-right: 8px; 
+    object-fit: contain; 
+  }
+
+  
+  /* 하단 추가 링크 스타일 */
+  .form-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .form-footer p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .form-footer a {
+    color: var(--color-pink);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .form-footer a:hover {
+    color: var(--color-beige);
+  }
+  

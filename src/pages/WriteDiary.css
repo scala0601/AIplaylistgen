@@ -1,0 +1,93 @@
+.diary-container {
+    background-color: #000;
+    width: 50%;
+    min-width: 300px; 
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+.diary-header {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: start;
+    margin: 56px 0 32px 0;
+
+    background: var(--gradient-secondary);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.diary-date {
+    font-size: 1.5rem;
+    font-weight: 500;   
+    text-align: start;
+    margin: 0 0 24px;
+    color: #ccc;
+  }
+
+.diary-form {
+    width: 100%;
+}   
+
+.input-group {
+    margin-bottom: 15px;
+    border-radius: 8px; 
+  }
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: inherit; 
+    padding: 12px 15px;
+    font-size: 0.875rem;
+    font-family: Inter;
+    font-weight: 500;
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+    color: white; 
+}
+
+  
+.diary-genre {
+    color:  rgba(255, 255, 255, 0.6); 
+}
+.diary-genre option {
+    background-color: #000;
+}
+  
+.diary-title{
+    color: white;
+}
+  .diary-textarea {
+      font-size: 1rem;
+      color:white;
+      resize: vertical; /* 수직으로 크기 조절 가능 */
+  }
+  
+  .submit-button {
+    background: var(--gradient-primary);
+    border: none;
+    width: fit-content;
+    padding: 12px 20px;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: 800;
+    
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
