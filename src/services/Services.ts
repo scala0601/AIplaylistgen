@@ -42,7 +42,7 @@ export const saveDiary = async (diary: { date: string; title: string; content: s
   
   export const fetchDiaryData = async (date: string): Promise<DiaryData | null> => {
     try {
-      const response = await axios.get(`http://localhost:5000/api?date=${date}`, {
+      const response = await axios.get(`http://localhost:5000/api/fetch?date=${date}`, {
         withCredentials: true,  // 세션을 사용하기 위해 필요
         headers: {
           'Content-Type': 'application/json',
