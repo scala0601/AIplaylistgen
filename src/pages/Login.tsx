@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import googleIcon from '../assets/google.avif';
 import { useAuth } from '../context/AuthContext';
+
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 function Login() {
@@ -72,7 +73,7 @@ function Login() {
         }
       }}>
         <h2 className="title-medium center">로그인</h2>
-        <div className="input-group">
+        <div className="login-input-group">
           <input
             type="text"
             value={username}
@@ -81,7 +82,7 @@ function Login() {
             className="login-input"
           />
         </div>
-        <div className="input-group">
+        <div className="login-input-group">
           <input
             type="password"
             value={password}
@@ -96,12 +97,14 @@ function Login() {
         >
           로그인
         </button>
+
         <GoogleLogin
           //clientId="YOUR_GOOGLE_CLIENT_ID"
           onSuccess={handleLoginSuccess}
           onError={() => console.error("Login Failed")}
           useOneTap
         />
+
         <div className="form-footer">
           <p>
             계정이 없으신가요? <Link to="/signup">회원가입</Link>

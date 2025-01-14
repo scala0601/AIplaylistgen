@@ -1,3 +1,4 @@
+
 // src/services/auth.ts
 // 인증 관련 타입 정의
 
@@ -103,4 +104,5 @@ export const signup = async (credentials: SignupCredentials) => {
 
 export const getUsername = () => {
   return '사용자이름'; // 여기에 실제 사용자 이름을 반환하는 로직을 추가하세요.
+
 }; 

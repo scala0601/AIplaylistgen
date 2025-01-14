@@ -1,3 +1,4 @@
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -6,19 +7,24 @@
     background-color: black; 
 }   
 
-.input-group {
-    
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-input-group {
+    width: 250px;
     text-align: left;
     margin-bottom: 10px;
   }
   
-  .input-group label {
+  .login-input-group label {
     display: block;
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.8); 
   }
   
-  .input-group input {
+  .login-input-group input {
     color: white; 
     background: rgba(255, 255, 255, 0.1); 
     border: 1px solid rgba(255, 255, 255, 0.3); 
@@ -30,11 +36,11 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .input-group input::placeholder {
+  .login-input-group input::placeholder {
     color: rgba(255, 255, 255, 0.6); 
   }
   
-  .input-group input:focus {
+  .login-input-group input:focus {
     outline: none;
     border: 1px solid #e4a8ae; 
     box-shadow: 0 0 8px rgba(228, 168, 174, 0.4); 

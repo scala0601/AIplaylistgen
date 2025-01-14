@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { signup } from '../services/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -79,4 +80,3 @@ function Signup() {
   );
 }
 
-export default Signup; 

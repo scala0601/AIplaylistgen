@@ -1,10 +1,13 @@
+
 // src/pages/Playlist.tsx
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchDiaryData, DiaryData } from "../services/Services";
 import "./Playlist.css";
+import "../index.css";
+import MenuBurgerIcon from "../assets/menu-burger.svg";
 
-type Status = "loading" | "error" | "no-data" | "success";
+type Status = "loading" | "error" | "success";
 
 function Playlist() {
   const location = useLocation();
@@ -21,12 +24,8 @@ function Playlist() {
     const fetchData = async () => {
       try {
         const data = await fetchDiaryData(date);
-        if (!data) {
-          setStatus("no-data");
-        } else {
-          setDiaryData(data);
-          setStatus("success");
-        }
+        setDiaryData(data);
+        setStatus("success");
       } catch (error) {
         console.error("데이터 가져오기 실패:", error);
         setStatus("error");
@@ -52,48 +51,64 @@ function Playlist() {
     );
   }
 
-  if (status === "no-data") {
-    return (
-      <div className="no-data-container">
-        <p>이 날짜의 일기가 없습니다.</p>
-        <button
-          onClick={() => navigate(`/write-diary?date=${date}`)}
-          className="write-diary-button"
-        >
-          이 날짜에 일기 작성하기
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <div className="playlist-container">
-      {/* 왼쪽: 일기 정보 */}
-      <div className="diary-section">
-        <h2>{new Date(diaryData!.date).toLocaleDateString()}</h2>
-        <p><strong>감정:</strong> {diaryData!.emotion || "분석되지 않음"}</p>
-        <h3>{diaryData!.title}</h3>
-        <p>{diaryData!.content}</p>
-      </div>
-
-      {/* 오른쪽: 플레이리스트 */}
-      <div className="playlist-section">
-        <h2>오늘의 플레이리스트</h2>
-        <ul>
+    <div className="container">
+      <div className="playlist-container">
+        {/* 왼쪽: 일기 정보 */}
+        <div className="section-wrapper">
+          <h2 className="section-header">지금 필요한 플레이리스트</h2>
+          <h3 className="section-subheader">
+            {new Date(date).toLocaleDateString('ko-KR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            weekday: 'long',  
+          })}</h3>
+          <div className="diary-section">
+            <div className="calendar-widget">
+              <div className="date-display">
+              <span className="day">
+                {new Date(date).toLocaleDateString('en-US', {weekday: 'short'})}
+              </span>
+              <span className="date">
+                {new Date(date).toLocaleDateString('en-US', {day: '2-digit'})}
+              </span>
+            </div>
+            <div className="dots">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          </div>
+          <div className="diary-content">
+              <h2>{diaryData!.title}</h2>
+              <p>{diaryData!.content}</p>
+            </div>
+          </div>
+        </div>
+        {/* 오른쪽: 플레이리스트 */}
+        <div className="playlist-section">
+          <div className="playlist-header">
+          <p>{diaryData!.emotion}한 하루에 어울리는 {diaryData!.genre} Playlist</p>
+        </div>
+        <ul style={{padding: 0}}>
           {diaryData!.playlist.map((song, index) => (
             <li key={index} className="playlist-item">
-              <img src={song.coverImage} alt={`${song.title} 앨범 커버`} />
+              <img src={MenuBurgerIcon} alt="icon" className="menu-burger-icon"/>
+              <img src={song.coverImage} alt={`${song.title} 앨범 커버`} className="cover"/>
               <div>
-                <p><strong>{song.title}</strong></p>
-                <p>{song.artist}</p>
-                <p>{song.album}</p>
-              </div>
+                <p className="artist">{song.artist}</p>
+                <p className="title">{song.title}</p>
+                <p className="album">{song.album}</p>
+              </div>  
             </li>
           ))}
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+    </div>  
   );
 }
 
 export default Playlist;
+

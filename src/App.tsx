@@ -12,6 +12,7 @@ import DiaryDetail from './pages/DiaryDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import Loading from './pages/Loading';
 import Playlist from './pages/Playlist';
+
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {

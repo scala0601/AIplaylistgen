@@ -1,3 +1,4 @@
+
 // src/services/Service.ts
 import axios from 'axios';
 
@@ -58,3 +59,4 @@ export const saveDiary = async (diary: { date: string; title: string; content: s
       throw new Error('일기 데이터를 가져오는 데 실패했습니다.');
     }
   };
+
