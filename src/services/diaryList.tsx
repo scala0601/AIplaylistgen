@@ -21,7 +21,7 @@ function DiaryList() {
   const [diaries, setDiaries] = useState<Diary[]>([]);
 
   useEffect(() => {
-    fetch('https://aigenbackend.onrender.com/api/list', {
+    fetch('http://localhost:5000/api/list', {
       method: 'GET',
       credentials: 'include',  // 세션을 사용하기 위한 옵션
     })
