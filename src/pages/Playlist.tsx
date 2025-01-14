@@ -1,7 +1,7 @@
 
 // src/pages/Playlist.tsx
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { fetchDiaryData, DiaryData } from "../services/Services";
 import "./Playlist.css";
 import "../index.css";
@@ -11,9 +11,9 @@ type Status = "loading" | "error" | "success";
 
 function Playlist() {
   const location = useLocation();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [diaryData, setDiaryData] = useState<DiaryData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  //const [loading, setLoading] = useState<boolean>(true);
   const [status, setStatus] = useState<Status>("loading");
 
   // URL에서 date 파라미터 추출

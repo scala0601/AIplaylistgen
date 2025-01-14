@@ -1,10 +1,10 @@
 // src/components/NavBar.tsx
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { Link, useLocation} from 'react-router-dom';
 import './NavBar.css'; 
 import { useAuth } from '../context/AuthContext';
 import profileImage from '../assets/profile.svg';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { fetchUserInfo } from '../services/auth';
 
 function NavBar() {
@@ -34,15 +34,15 @@ function NavBar() {
   };
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [username, setUsername] = React.useState<string | null>(null);
+  //const [username, setUsername] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      setUsername(localStorage.getItem('username') || null);
-    } else {
-      setUsername(null);
-    }
-  }, [isLoggedIn]);
+  // React.useEffect(() => {
+  //   if (isLoggedIn) {
+  //     setUsername(localStorage.getItem('username') || null);
+  //   } else {
+  //     setUsername(null);
+  //   }
+  // }, [isLoggedIn]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

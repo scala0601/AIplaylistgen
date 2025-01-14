@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from 'react';
+//import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import NavBar from './components/NavBar';
@@ -13,7 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Loading from './pages/Loading';
 import Playlist from './pages/Playlist';
 
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   return (

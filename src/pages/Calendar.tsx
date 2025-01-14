@@ -1,28 +1,28 @@
 // src/pages/Calendar.tsx
-import React, { MouseEvent, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar as ReactCalendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css';
 import { Value } from 'react-calendar/dist/cjs/shared/types.js';
 import { useNavigate } from 'react-router-dom';
-import { fetchDiaryData, fetchAllDiaries } from "../services/Services";
+import {  fetchAllDiaries } from "../services/Services";
 import Modal from '../components/Modal';
 
-interface PlaylistItem {
-  title: string;
-  artist: string,
-  videoId: string;
-  description: string;
-  thumbnail: string;
-}
-interface DiaryData {
-  title: string;
-  content: string;
-  date: string;
-  emotion: string;
-  playlist: PlaylistItem[];
-  genre: string;
-}
+// interface PlaylistItem {
+//   title: string;
+//   artist: string,
+//   videoId: string;
+//   description: string;
+//   thumbnail: string;
+// }
+// interface DiaryData {
+//   title: string;
+//   content: string;
+//   date: string;
+//   emotion: string;
+//   playlist: PlaylistItem[];
+//   genre: string;
+// }
 
 const emotionMapping: { [key: string]: string } = {
   행복: 'happiness',
@@ -38,24 +38,24 @@ const emotionMapping: { [key: string]: string } = {
 };
 
 // 1) Mock 데이터
-const mockDiaryData: { [key: string]: { albumImage: string, emotion: string } } = {
-  '2025-01-05': {
-    albumImage: 'https://picsum.photos/id/1015/200/200', 
-    emotion: 'happiness',
-  },
-  '2025-01-12': {
-    albumImage: 'https://picsum.photos/id/1025/200/200',
-    emotion: 'sadness',
-  },
-  '2025-01-02': {
-    albumImage: 'https://picsum.photos/id/1045/200/200',
-    emotion: 'anger',
-  },
-  '2025-01-06': {
-    albumImage: 'https://picsum.photos/id/1035/200/200',
-    emotion: 'calmness',
-  },
-};
+// const mockDiaryData: { [key: string]: { albumImage: string, emotion: string } } = {
+//   '2025-01-05': {
+//     albumImage: 'https://picsum.photos/id/1015/200/200', 
+//     emotion: 'happiness',
+//   },
+//   '2025-01-12': {
+//     albumImage: 'https://picsum.photos/id/1025/200/200',
+//     emotion: 'sadness',
+//   },
+//   '2025-01-02': {
+//     albumImage: 'https://picsum.photos/id/1045/200/200',
+//     emotion: 'anger',
+//   },
+//   '2025-01-06': {
+//     albumImage: 'https://picsum.photos/id/1035/200/200',
+//     emotion: 'calmness',
+//   },
+// };
 
 
 function Calendar() {

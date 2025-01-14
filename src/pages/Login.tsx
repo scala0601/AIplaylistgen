@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { login, googleLogin, fetchUserInfo } from '../services/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
-import googleIcon from '../assets/google.avif';
+//import googleIcon from '../assets/google.avif';
 import { useAuth } from '../context/AuthContext';
 
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
@@ -43,11 +43,6 @@ function Login() {
     }
   };
 
-  // 구글 로그인 실패 시 처리
-  const handleLoginFailure = (error: any) => {
-    console.error('구글 로그인 실패:', error);
-    alert('로그인에 실패했습니다. 다시 시도해주세요.');
-  };
 
 
   return (
