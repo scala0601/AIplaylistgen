@@ -42,7 +42,7 @@ export const login = async (credentials: LoginCredentials) => {
 
 export const googleLogin = async (credential: string): Promise<boolean> => {
   try {
-    const response = await fetch('http://localhost:5000/login/google/callback', {
+    const response = await fetch('https://aigenbackend.onrender.com/login/google/callback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const googleLogin = async (credential: string): Promise<boolean> => {
 
 export const fetchUserInfo = async (): Promise<any> => {
   try {
-    const response = await fetch('http://localhost:5000/login/status', {
+    const response = await fetch('https://aigenbackend.onrender.com/login/status', {
       method: 'GET',
       credentials: 'include', // 세션 정보를 포함하여 요청
     });

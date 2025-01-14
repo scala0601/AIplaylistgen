@@ -21,7 +21,7 @@ import axios from 'axios';
 // 일기 저장을 위한 mockup API 함수
 export const saveDiary = async (diary: { date: string; title: string; content: string; genre: string }) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/save', diary, {
+    const response = await axios.post('https://aigenbackend.onrender.com/api/save', diary, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const saveDiary = async (diary: { date: string; title: string; content: s
   
   export const fetchDiaryData = async (date: string): Promise<DiaryData | null> => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/fetch?date=${date}`, {
+      const response = await axios.get(`https://aigenbackend.onrender.com/api/fetch?date=${date}`, {
         withCredentials: true,  // 세션을 사용하기 위해 필요
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const saveDiary = async (diary: { date: string; title: string; content: s
 
   export const fetchAllDiaries = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/fetchAll`, {
+      const response = await axios.get(`https://aigenbackend.onrender.com/api/fetchAll`, {
         withCredentials: true,  // 세션을 사용하기 위해 필요
         headers: {
           'Content-Type': 'application/json',
