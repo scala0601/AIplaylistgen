@@ -168,3 +168,56 @@
   border-radius: 50%;
   opacity: 0.5;
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 10px;
+  }
+  .playlist-container {
+    display: flex;
+    flex-direction: column; /* 수직 배치 */
+    gap: 20px;
+    width: 90%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-header {
+    order: -1; /* 헤더를 최상단에 배치 */
+    font-size: 1.5rem; /* 크기 조정 */
+    margin-bottom: 10px;
+    margin-left: 5px;
+  }
+
+  .section-subheader {
+    margin-left: 5px;
+    font-size: 1rem;
+  }
+
+  .playlist-section {
+    order: 1; /* 플레이리스트 섹션을 두 번째로 배치 */
+    width: 100%;
+    padding: 0;
+  }
+
+  .playlist-header p{
+    font-size: 1.2rem;
+  }
+
+  .calendar-widget {
+    display: none;
+  }
+
+  .diary-section {
+    order: 2; /* 다이어리 섹션을 마지막으로 배치 */
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .diary-content h2{
+    font-size: 1rem;
+  }
+  .diary-content p{
+   font-size: 0.8rem;
+  }
+}
