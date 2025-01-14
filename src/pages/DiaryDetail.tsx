@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function DiaryDetail() {
   const { date } = useParams();
-  const [diary, setDiary] = useState<any>(null);
+  const [diary] = useState<any>(null);
 
   useEffect(() => {
     // TODO: API 호출로 해당 날짜의 일기를 가져오는 로직 구현
