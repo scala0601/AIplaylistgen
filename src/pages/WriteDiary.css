@@ -105,4 +105,36 @@
     justify-content: center;
   }
   
-
+  @media (max-width: 768px) {
+    .diary-container {
+      width: 95%;
+      margin: 0 auto; 
+    }
+  
+    .diary-header {
+      font-size: 1.5rem; 
+      margin: 16px 0; 
+    }
+  
+    .diary-date {
+      font-size: 1rem; 
+      margin: 0 0 16px; 
+    }
+  
+    .submit-button {
+      padding: 10px 16px; 
+      font-size: 0.875rem; 
+    }
+  
+    .input-group input,
+    .input-group textarea,
+    .input-group select {
+      padding: 10px 12px; 
+      font-size: 0.875rem; 
+    }
+  
+    .input-group {
+      margin: 8px 0; 
+    }
+  }
+  

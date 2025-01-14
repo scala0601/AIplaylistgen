@@ -40,10 +40,14 @@ button {
   cursor: pointer;
 }
 
+html, body {
+  overflow-x: hidden; 
+}
+
 .container {
   width: 100%;
   min-height: 100vh;
-  margin: 72px auto 0;
+  margin: 72px 0 0 0;
   background-color: black;
   color: white;
 }

@@ -54,7 +54,7 @@
   .react-calendar__navigation__label {
     order: 1;
     pointer-events: none; /* 클릭 이벤트 비활성화 */
-
+    color: var(--color-beige) !important;
     font-weight: 700;
   }
   .react-calendar__navigation__arrow {
@@ -167,3 +167,35 @@
   max-height: 100%;
   object-fit: contain !important;
 } 
+
+
+/* 모바일 화면에서 좌우 여백 줄이기 */
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    width: 100%; /* 화면 너비의 90%로 설정 */
+    padding: 0; /* 좌우 여백 축소 */
+  }
+
+  .react-calendar {
+    width: 100%; /* 부모 요소에 맞춰 캘린더 너비 조정 */
+  }
+
+  .react-calendar__navigation {
+    padding: 20px 10px; /* 네비게이션 영역 여백 축소 */
+    gap: 10px;
+  }
+
+  .react-calendar__tile {
+    aspect-ratio: 1 / 1.5; /* 타일 비율을 정사각형에 가깝게 조정 */
+  }
+
+  .react-calendar__month-view__weekdays {
+    font-size: 0.8rem;
+  }
+
+  .emotion-badge {
+    width: 18px;
+    height: 18px;
+    margin: 3px 0;
+  }
+}
