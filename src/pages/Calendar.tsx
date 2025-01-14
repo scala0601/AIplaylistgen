@@ -6,6 +6,7 @@ import './Calendar.css';
 import { Value } from 'react-calendar/dist/cjs/shared/types.js';
 import { useNavigate } from 'react-router-dom';
 import { fetchDiaryData, fetchAllDiaries } from "../services/Services";
+import Modal from '../components/Modal';
 
 interface PlaylistItem {
   title: string;
@@ -62,6 +63,8 @@ function Calendar() {
   const [diaryData, setDiaryData] = useState<{ [key: string]: { albumImage: string; emotion: string } }>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -86,6 +89,29 @@ function Calendar() {
     return <div>{error}</div>;  // 에러가 발생했을 때 표시
   }
   
+  const today = new Date();
+
+  const handleDateClick = async (value: Value) => {
+    const date = value as Date;
+
+    // 오늘 이후 날짜를 클릭했을 경우 모달 표시
+    if (date > today) {
+      setShowModal(true);
+      return;
+    }
+
+    const formattedDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .split('T')[0];
+
+    if (diaryData[formattedDate]) {
+      navigate(`/playlist?date=${formattedDate}`);
+    } else {
+      navigate(`/diary?date=${formattedDate}`);
+    }
+  };
 
   return (
     <div className="container">
@@ -93,17 +119,7 @@ function Calendar() {
         <ReactCalendar
           prev2Label={null}
           next2Label={null}
-          onChange={async (value: Value) => {
-            const date = value as Date;
-            const formattedDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
-              .toISOString()
-              .split('T')[0];
-              if (diaryData[formattedDate]) {
-                navigate(`/playlist?date=${formattedDate}`);
-              } else {
-                navigate(`/diary?date=${formattedDate}`);
-              }
-          }}
+          onChange={handleDateClick}
           value={new Date()}
           locale="ko-KR" 
           className="react-calendar"
@@ -149,6 +165,12 @@ function Calendar() {
             return null;
           }}
         />
+        {showModal && (
+          <Modal
+            message="오늘 이후의 날짜는 선택할 수 없습니다."
+            onClose={() => setShowModal(false)}
+          />
+        )}
       </div>
     </div>
   );

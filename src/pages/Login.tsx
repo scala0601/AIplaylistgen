@@ -32,6 +32,7 @@ function Login() {
       if (googleLoginSuccess) {
         setIsLoggedIn(true);
         const userInfo = await fetchUserInfo();
+        setUsername(userInfo.name);
         console.log('사용자 정보:', userInfo);
         
         // 로그인 후 홈 화면으로 리디렉션

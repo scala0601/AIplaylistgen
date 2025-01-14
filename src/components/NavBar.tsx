@@ -1,14 +1,33 @@
 // src/components/NavBar.tsx
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useLocation} from 'react-router-dom';
 import './NavBar.css'; 
 import { useAuth } from '../context/AuthContext';
 import profileImage from '../assets/profile.svg';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { fetchUserInfo } from '../services/auth';
 
 function NavBar() {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const location = useLocation();
   const currentPath = location.pathname;
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // 사용자 정보 가져오기
+    const getUserInfo = async () => {
+      try {
+        const data = await fetchUserInfo();
+        setUser(data); // 사용자 정보 설정
+      
+      } catch (error) {
+        console.error('사용자 정보 가져오기 실패:', error);
+      
+      }
+    };
+
+    getUserInfo();
+  }, []);
 
   const handleLogout = async () => {
     setIsLoggedIn(false);
@@ -30,8 +49,9 @@ function NavBar() {
   };
 
   return (
+    <GoogleOAuthProvider clientId="518790916105-5vks5d48e409tqq2i616decr2ip9a38o.apps.googleusercontent.com">
     <nav className="navbar">
-      <div className="logo">SERVICE</div>
+      <div className="logo">TUNETALES</div>
       {/* 데스크톱 네비게이션 바 */}
       <ul className="nav-links">
         <li>
@@ -70,7 +90,7 @@ function NavBar() {
         {isLoggedIn && (
           <div className="mobile-profile-info">
             <img src={profileImage} alt="Profile" className="profile-image" />
-            <span className="username">{username} 님</span>
+            <span className="username">{user.name} 님</span>
           </div>
         )}
         <li>
@@ -118,11 +138,12 @@ function NavBar() {
       {/* 데스크톱 프로필 정보 */}
       {isLoggedIn && (
         <div className="profile-info">
-          <span className="username">{username} 님</span>
+          <span className="username">{user.name} 님</span>
           <img src={profileImage} alt="Profile" className="profile-image" />
         </div>
       )}
     </nav>
+    </GoogleOAuthProvider>
   );
 }
 
