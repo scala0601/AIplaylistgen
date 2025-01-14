@@ -53,7 +53,7 @@
     font-weight: 500;
     
     padding: 10px 20px;
-    border-radius: 20px; 
+    border-radius: 4px; 
     cursor: pointer;
     width: 100%; 
     margin-top: 10px;
@@ -77,6 +77,27 @@
     object-fit: contain; 
   }
 
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0; /* 위아래 간격 */
+    color: #ccc; /* 취소선 색상 */
+    font-size: 14px;
+  }
+  
+  .divider:before,
+  .divider:after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc; /* 취소선 스타일 */
+    margin: 0 10px; /* 텍스트와 선 사이 간격 */
+  }
+  
+  .divider-text {
+    color: #777; /* 텍스트 색상 */
+    font-size: 1rem;
+  }
   
   /* 하단 추가 링크 스타일 */
   .form-footer {

@@ -98,6 +98,10 @@ function Login() {
           로그인
         </button>
 
+        <div className="divider">
+          <span className="divider-text">or</span>
+        </div>
+
         <GoogleLogin
           //clientId="YOUR_GOOGLE_CLIENT_ID"
           onSuccess={handleLoginSuccess}
