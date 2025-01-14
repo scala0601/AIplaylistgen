@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WriteDiary.css';
@@ -28,10 +29,12 @@ function WriteDiary() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       navigate(`/loading`, {
         state: {
@@ -44,11 +47,13 @@ function WriteDiary() {
     } catch (error) {
       console.error('오류 발생:', error);
     }
+
   };
 
   return (
     <div className="container">
       <div className="diary-container">
+
         <h1 className="diary-header">
           {isToday ? '오늘의 일기를 작성해보세요' : '이 날의 일기를 작성해보세요'}
         </h1>
@@ -100,6 +105,7 @@ function WriteDiary() {
             오늘의 플레이리스트 생성하기
           </button>
         </form>
+
       </div>
     </div>
   );

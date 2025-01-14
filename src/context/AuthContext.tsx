@@ -1,20 +1,28 @@
-// src/context/AuthContext.tsx
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// 로그인 상태와 관련된 타입 정의
+// AuthContext의 타입 정의
 interface AuthContextType {
   isLoggedIn: boolean;
   setIsLoggedIn: (loggedIn: boolean) => void;
 }
 
-// Context 생성
+// AuthContext 생성
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider 컴포넌트 생성
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //const isLoggedIn = true;
-  //const setIsLoggedIn = () => {};
+// AuthContextProvider 컴포넌트
+interface AuthContextProviderProps {
+  children: ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthContextProviderProps> = ({ children }) => {
+  const [isLoggedIn, setIsLoggedInState] = useState<boolean>(false);
+
+  // setIsLoggedIn 함수는 isLoggedIn 상태를 업데이트
+  const setIsLoggedIn = (loggedIn: boolean) => {
+    setIsLoggedInState(loggedIn);
+  };
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
@@ -22,11 +30,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 };
 
-// Context 사용을 위한 커스텀 훅
-export const useAuth = () => {
+// AuthContext를 사용하려는 컴포넌트에서 사용할 수 있는 custom hook
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useAuth must be used within an AuthContextProvider');
   }
   return context;
-}; 
+};

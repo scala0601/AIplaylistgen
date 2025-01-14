@@ -13,8 +13,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Loading from './pages/Loading';
 import Playlist from './pages/Playlist';
 
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+
 function App() {
   return (
+    <GoogleOAuthProvider clientId="518790916105-5vks5d48e409tqq2i616decr2ip9a38o.apps.googleusercontent.com">
     <AuthProvider>
       <BrowserRouter>
         <NavBar />
@@ -46,6 +49,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </GoogleOAuthProvider>
   );
 }
 

@@ -1,6 +1,7 @@
+
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { generatePlaylist, saveDiary } from '../services/Services';
+import { saveDiary } from '../services/Services';
 import './Loading.css';
 
 function Loading() {
@@ -17,8 +18,6 @@ function Loading() {
         console.log('일기 저장 완료:', diaryData);
 
         // 2. 감정분석 및 플레이리스트 생성
-        const response = await generatePlaylist(diaryData);
-        console.log('감정분석 및 플레이리스트 생성 완료:', response);
 
         // 3. 플레이리스트 페이지로 이동
         navigate(`/playlist?date=${date}`);
@@ -40,3 +39,4 @@ function Loading() {
 }
 
 export default Loading;
+
