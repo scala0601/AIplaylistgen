@@ -1,10 +1,40 @@
 // src/pages/Calendar.tsx
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useState, useEffect } from 'react';
 import { Calendar as ReactCalendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css';
 import { Value } from 'react-calendar/dist/cjs/shared/types.js';
 import { useNavigate } from 'react-router-dom';
+import { fetchDiaryData, fetchAllDiaries } from "../services/Services";
+
+interface PlaylistItem {
+  title: string;
+  artist: string,
+  videoId: string;
+  description: string;
+  thumbnail: string;
+}
+interface DiaryData {
+  title: string;
+  content: string;
+  date: string;
+  emotion: string;
+  playlist: PlaylistItem[];
+  genre: string;
+}
+
+const emotionMapping: { [key: string]: string } = {
+  행복: 'happiness',
+  우울: 'sadness',
+  평온: 'calmness',
+  사랑: 'love',
+  분노: 'anger',
+  두려움: 'fear',
+  흥분: 'excitement',
+  지루함: 'boredom',
+  외로움: 'loneliness',
+  데이터없음: 'no-data',  // 데이터 없을 때의 기본 스타일
+};
 
 // 1) Mock 데이터
 const mockDiaryData: { [key: string]: { albumImage: string, emotion: string } } = {
@@ -29,6 +59,33 @@ const mockDiaryData: { [key: string]: { albumImage: string, emotion: string } } 
 
 function Calendar() {
   const navigate = useNavigate();
+  const [diaryData, setDiaryData] = useState<{ [key: string]: { albumImage: string; emotion: string } }>({});
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      try {
+        const data = await fetchAllDiaries(); // 이미 만들어둔 fetchAllDiaries 함수 호출
+        setDiaryData(data);  // 데이터를 상태에 저장
+      } catch (err) {
+        setError('일기 데이터를 가져오는 데 실패했습니다.');  // 에러 처리
+      } finally {
+        setLoading(false);  // 로딩 상태 종료
+      }
+    };
+
+    fetchAll();
+  }, []); // 컴포넌트가 처음 렌더링될 때만 실행
+
+  if (loading) {
+    return <div>Loading...</div>;  // 로딩 중일 때 표시
+  }
+
+  if (error) {
+    return <div>{error}</div>;  // 에러가 발생했을 때 표시
+  }
+  
 
   return (
     <div className="container">
@@ -36,17 +93,16 @@ function Calendar() {
         <ReactCalendar
           prev2Label={null}
           next2Label={null}
-          onChange={(value: Value) => {
+          onChange={async (value: Value) => {
             const date = value as Date;
             const formattedDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
               .toISOString()
               .split('T')[0];
-            
-            if (mockDiaryData[formattedDate]) {
-              navigate(`/playlist?date=${formattedDate}`);
-            } else {
-              navigate(`/diary?date=${formattedDate}`);
-            }
+              if (diaryData[formattedDate]) {
+                navigate(`/playlist?date=${formattedDate}`);
+              } else {
+                navigate(`/diary?date=${formattedDate}`);
+              }
           }}
           value={new Date()}
           locale="ko-KR" 
@@ -62,12 +118,13 @@ function Calendar() {
                 .split('T')[0];
   
               // Mock 데이터에 해당 날짜 키가 있으면 앨범 이미지를 표시
-              if (mockDiaryData[formattedDate]) {
-                const { emotion, albumImage } = mockDiaryData[formattedDate];
+              if (diaryData[formattedDate]) {
+                const { emotion, albumImage } = diaryData[formattedDate];
+                const emotionClass = emotionMapping[emotion] || 'no-data';
                 return (
                   <div className="tile-container">
                     {/* 날짜(원 모양) */}
-                    <div className={`emotion-badge ${emotion}`}>
+                    <div className={`emotion-badge ${emotionClass}`}>
                       {date.getDate()}
                     </div>
                     {/* 앨범 이미지 */}

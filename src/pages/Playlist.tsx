@@ -95,11 +95,10 @@ function Playlist() {
           {diaryData!.playlist.map((song, index) => (
             <li key={index} className="playlist-item">
               <img src={MenuBurgerIcon} alt="icon" className="menu-burger-icon"/>
-              <img src={song.coverImage} alt={`${song.title} 앨범 커버`} className="cover"/>
+              <img src={song.thumbnail} alt={`${song.title} 앨범 커버`} className="cover"/>
               <div>
                 <p className="artist">{song.artist}</p>
                 <p className="title">{song.title}</p>
-                <p className="album">{song.album}</p>
               </div>  
             </li>
           ))}

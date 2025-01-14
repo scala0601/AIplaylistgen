@@ -4,7 +4,7 @@ import { signup } from '../services/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'; 
 
-function Signup() {
+export function Signup() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

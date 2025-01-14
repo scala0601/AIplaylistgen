@@ -4,6 +4,7 @@ import axios from 'axios';
 
   interface PlaylistItem {
     title: string;
+    artist: string,
     videoId: string;
     description: string;
     thumbnail: string;
@@ -60,3 +61,21 @@ export const saveDiary = async (diary: { date: string; title: string; content: s
     }
   };
 
+  export const fetchAllDiaries = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/fetchAll`, {
+        withCredentials: true,  // 세션을 사용하기 위해 필요
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.data) {
+        return response.data;
+      } else {
+        return null;  // 일기가 없으면 null 반환
+      }
+    } catch (error) {
+      console.error('Error fetching diary:', error);
+      throw new Error('일기 데이터를 가져오는 데 실패했습니다.');
+    }
+  };

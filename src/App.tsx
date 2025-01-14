@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import WriteDiary from './pages/WriteDiary';
 import Calendar from './pages/Calendar';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+import { Signup } from './pages/Signup';
 import DiaryDetail from './pages/DiaryDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import Loading from './pages/Loading';
