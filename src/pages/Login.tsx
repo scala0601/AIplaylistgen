@@ -46,7 +46,7 @@ function Login() {
 
 
   return (
-    <GoogleOAuthProvider clientId="518790916105-5vks5d48e409tqq2i616decr2ip9a38o.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT as string}>
     <div className="login-container">
       {message && (
         <div className="login-message">

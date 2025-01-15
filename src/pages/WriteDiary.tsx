@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './WriteDiary.css';
 
 // 장르 리스트 상수 분리
-const GENRES = ['장르 무관', '락', '케이팝', '힙합', '팝', '재즈', '클래식', 'EDM', '레게', 'R&B', '컨트리'];
+const GENRES = ['장르 무관', '락', '케이팝', '힙합', '팝', '재즈', '클래식', 'EDM', 'R&B', '컨트리'];
 
 function WriteDiary() {
   const navigate = useNavigate();

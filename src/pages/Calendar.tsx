@@ -27,7 +27,7 @@ import Modal from '../components/Modal';
 const emotionMapping: { [key: string]: string } = {
   행복: 'happiness',
   우울: 'sadness',
-  평온: 'calmness',
+  잔잔: 'calmness',
   사랑: 'love',
   분노: 'anger',
   두려움: 'fear',

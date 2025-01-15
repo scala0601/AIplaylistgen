@@ -49,7 +49,7 @@ function NavBar() {
   };
 
   return (
-    <GoogleOAuthProvider clientId="518790916105-5vks5d48e409tqq2i616decr2ip9a38o.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT as string}>
     <nav className="navbar">
       <div className="logo">TUNETALES</div>
       {/* 데스크톱 네비게이션 바 */}
