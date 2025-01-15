@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
+# TuneTales
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Outline
 
-Currently, two official plugins are available:
+어떤 음악은 듣기만 해도 그 시절의 경험과 감정을 생생히 떠오르게 합니다. 하루를 글 뿐만이 아니라 어울리는 음악과 함께 기억해보세요.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**TUNETALES**는 당신의 하루를 음악으로 표현하는 음악 추천 서비스입니다. 작성한 일기를 AI가 분석하여 그 날의 기분에 꼭 맞는 플레이리스트를 만들어 드립니다. 원하는 음악 장르와 감정을 연결해, 단순한 음악 스트리밍을 넘어 개인화된 음악 경험을 제공합니다.
 
-## Expanding the ESLint configuration
+## Landing Page
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 지금 시작하기
+    
+    `지금 시작하기`  버튼을 눌러 처음 사용해본 사용자도 쉽게 서비스를 이용해 볼 수 있습니다. 로그인이 되어있지 않을 경우 `login` 페이지로, 로그인이 되어있을 경우 바로 `write diary` 페이지로 이동합니다.
+    
+- 구글 계정으로 로그인, 기본 계정으로 로그인을 지원합니다.
 
-- Configure the top-level `parserOptions` property like this:
+## Write Diary
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `지금 시작하기` 버튼 혹은 네비게이션 바에서 바로 이동한 경우 오늘 날짜의 일기를 작성할 수 있습니다.
+- 사용자는 제목과 일기 본문을 작성하고, 오늘 듣고 싶은 장르를 선택해야 합니다.
+- `플레이리스트 생성하기` 버튼을 눌러 일기를 저장하고 오늘 기분에 맞는 플레이리스트를 제공받을 수 있습니다.
+    - AI가 작성한 일기를 분석해 오늘의 감정을 파악합니다.
+    - 감정 분석 결과를 바탕으로 원하는 장르의 음악을 추천합니다.
+        - 감정은 행복, 우울, 잔잔, 사랑, 분노, 두려움, 흥분, 지루함, 외로움 등으로 분석됩니다.
+     
+## Calendar
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- 이 달에 일기를 작성했던 날들을 한 눈에 확인할 수 있습니다.
+    - 일기를 작성한 날에는 분석된 감정에 해당하는 색깔 뱃지와 생성된 플레이리스트 노래의 커버 이미지가 표시됩니다.
+    - 일기를 작성한 날짜 타일을 클릭하면 그날 작성했던 일기와 생성된 플레이리스트를 확인할 수 있습니다.
+- 일기를 작성하지 않은 날짜 타일을 클릭하면 그 날의 일기를 작성하는 `write diary` 페이지로 이동합니다.
+    - 미래의 일기는 작성할 수 없습니다. 오늘 이후의 날짜 타일을 클릭해도 `write diary` 페이지로 이동하지 않습니다.
